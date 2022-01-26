@@ -11,15 +11,18 @@ alert = #bd2c40
 
 [bar/main]
 width = 100%
-height = 19
+height = 17
+radius = 5.0
 fixed-center = false
 
-background = ${xrdb:background:#000000}
+background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 3
 line-color = #c3b7ff
 
+border-size = 4
+border-color = #00000000
 
 padding-left = 0
 padding-right = 2
@@ -54,7 +57,7 @@ label-mode-background = ${colors.primary}
 ; focused = Active workspace on focused monitor
 label-focused = %index%
 label-focused-background = ${colors.background-alt}
-label-focused-underline = #c3b7ff
+label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
@@ -72,6 +75,21 @@ label-urgent = %index%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = " %d/%m/%Y"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix = 
+format-prefix-foreground = #c3b7ff
+format-underline = #c3b7ff
+
+label = %date% %time%
 
 [module/battery]
 type = internal/battery
@@ -134,22 +152,6 @@ menu-2-0 = power off
 menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
-
-[module/date]
-type = internal/date
-interval = 5
-
-date =
-date-alt = " %d/%m/%Y"
-
-time = %H:%M
-time-alt = %H:%M:%S
-
-format-prefix = 
-format-prefix-foreground = #c3b7ff
-format-underline = #c3b7ff
-
-label = %date% %time%
 
 [settings]
 screenchange-reload = true

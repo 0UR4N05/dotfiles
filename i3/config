@@ -1,7 +1,7 @@
-########################################################################
-#		0UR4N05						       							   #
-#								       								   #
-########################################################################
+############################################################################
+#				0UR4N05                                    #
+#								       	   #
+############################################################################
 
 ## the font  : font size
 font pango:monospace 8
@@ -31,7 +31,7 @@ set $right m
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+q kill
@@ -181,8 +181,8 @@ exec_always feh --bg-scale ~/Pictures/serial_lain_wallpaper.gif
 for_window [class="^.*"] border pixel 3
 
 # gaps 
-gaps inner 2
-gaps outer 2
+gaps inner 4
+gaps outer 4
 
 ## screenshotting 
 exec_always flameshot
@@ -205,4 +205,9 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%-
 
 # killing xfce shit 
 exec --no-startup-id "killall -q xfce4-notifyd" 
+
+# disabling that fucked auto supned
+exec_always xset s off; xset -dpms
+
+# curves 
 
