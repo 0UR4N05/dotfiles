@@ -1,20 +1,20 @@
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #222
+background = #150926
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
-foreground-alt = #555
-primary = #ffb52a
+foreground-alt = #150926
+primary = #150926
 secondary = #e60053
 alert = #bd2c40
 
 [bar/main]
 width = 100%
-height = 19
+height = 18
 fixed-center = false
 
-background = ${xrdb:background:#000000}
+background = #00  
 foreground = ${colors.foreground}
 
 line-size = 3

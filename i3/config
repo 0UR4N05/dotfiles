@@ -2,7 +2,7 @@
 #				0UR4N05                                    #
 #								       	   #
 ############################################################################
-
+# hDXvXLCBg2SkwAXePuZQqAlGYrXZ4UYim5Ra2svX
 ## the font  : font size
 font pango:monospace 8
 
@@ -25,7 +25,7 @@ set $mod Mod4
 set $up l
 set $down k
 set $left j
-set $right m
+set $right semicolon
 
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -153,10 +153,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym $left       resize shrink width 10 px or 10 ppt
-        bindsym $down       resize grow height 10 px or 10 ppt
-        bindsym $up         resize shrink height 10 px or 10 ppt
-        bindsym $right      resize grow width 10 px or 10 ppt
+        bindsym $left       resize shrink width 2 px or 2 ppt
+        bindsym $down       resize grow height 2 px or 2 ppt
+        bindsym $up         resize shrink height 2 px or 2 ppt
+        bindsym $right      resize grow width 2 px or 2 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left        resize shrink width 10 px or 10 ppt
@@ -187,12 +187,11 @@ gaps outer 4
 ## screenshotting 
 exec_always flameshot
 ## setting the second screen 
-exec_always xrandr --output VGA-1 --left-of LVDS-1
+exec_always xrandr --output VGA-1 --auto --left-of LVDS-1
 
 # locking screen 
-bindsym $mod+semicolon exec --no-startup-id i3lock-fancy
+bindsym $mod+p exec --no-startup-id i3lock-fancy
 # auto lock 
-exec --no-startup-id xautolock -time 40 -locker i3lock-fancy --text "la la mabghitsh"
 
 # controlling sound using fn keys 
 for_window [title="alsamixer"] floating enable border pixel 1
@@ -209,5 +208,6 @@ exec --no-startup-id "killall -q xfce4-notifyd"
 # disabling that fucked auto supned
 exec_always xset s off; xset -dpms
 
-# curves 
-
+# brightness using fn key bindings  
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl --min-val=2 -q set 3%-
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -q set 3%+

@@ -18,6 +18,8 @@ Plug 'preservim/nerdtree'		" nerd tree
 Plug 'neoclide/coc.nvim'		" fucking auto completion
 Plug 'catppuccin/nvim', {'as': 'catppuccin'}   "theme 
 Plug 'nvim-lualine/lualine.nvim'			" bar
+Plug 'akinsho/toggleterm.nvim'		
+Plug 'ahonn/vim-fileheader'				" inserting 
 call plug#end()
 set encoding=UTF-8
 
@@ -80,7 +82,19 @@ nmap l <Up>
 nmap j <Left>
 nmap k <Down>
 nmap ; <Right>
+vmap l <Up>
+vmap j <Left>
+vmap k <Down>
+vmap ; <Right>
+
+
 " opening and quiting nerdtree using keybindings 
 map <C-n> :NERDTreeToggle<CR>
-" nerdtree auto reload 
-autocmd CursorHold,CursorHoldI * call NERDTreeFocus() | call g:NERDTree.ForCurrentTab().getRoot().refresh() | call g:NERDTree.ForCurrentTab().render() | wincmd w
+" inserting the header
+map <C-h> :AddFileHeader<CR>
+map <C-u> :UpdateFileHeader<CR>
+
+" integrated terminal 
+require("toggleterm").setup{}
+nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
