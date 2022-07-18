@@ -1,8 +1,7 @@
 ############################################################################
-#				0UR4N05                                    #
-#								       	   #
+#       i3 configuration file for thinkpad                                 #
+#								       	                                   #
 ############################################################################
-# hDXvXLCBg2SkwAXePuZQqAlGYrXZ4UYim5Ra2svX
 ## the font  : font size
 font pango:monospace 8
 
@@ -56,7 +55,7 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# move focused window
+# moveused window
 bindsym $mod+Shift+$left move left
 bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
@@ -173,10 +172,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 ## starting polybar
-exec_always ~/.config/polybar/launcher.sh
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 # setting the wallpaper 
-exec_always feh --bg-scale ~/Pictures/serial_lain_wallpaper.gif
-
+exec_always feh --bg-scale ~/Pictures/wall.png 
 ## disabling the borders : 
 for_window [class="^.*"] border pixel 3
 
@@ -187,27 +185,24 @@ gaps outer 4
 ## screenshotting 
 exec_always flameshot
 ## setting the second screen 
-exec_always xrandr --output VGA-1 --auto --left-of LVDS-1
+#exec_always xrandr --output HDMI-1 --auto --left-of LVDS-1
 
 # locking screen 
 bindsym $mod+p exec --no-startup-id i3lock-fancy
-# auto lock 
 
-# controlling sound using fn keys 
-for_window [title="alsamixer"] floating enable border pixel 1
-# stupid volume icon 
-exec --no-startup-id volumeicon
-# fn keys to control voice
-
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%-
-
-# killing xfce shit 
-exec --no-startup-id "killall -q xfce4-notifyd" 
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -5%
 
 # disabling that fucked auto supned
 exec_always xset s off; xset -dpms
 
 # brightness using fn key bindings  
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl --min-val=2 -q set 3%-
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -q set 3%+
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 3
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 3
+
+
+# configuration for urxvt
+exec_always xrdb ~/.Xresources
+exec_always xrdb -merge ~/.Xresources
+
+

@@ -139,7 +139,9 @@ ex ()
 }
 
 # making man pages colored
-export PAGER="most
-alias pbcopy='xsel --clipboard --input'
-alias pbpaste='xsel --clipboard --output'
-"
+export PAGER="most"
+export USER="mlalama"
+export MAIL="mlalama@student.42.fr"
+. "$HOME/.cargo/env"
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
